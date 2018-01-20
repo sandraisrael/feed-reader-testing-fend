@@ -32,10 +32,11 @@ $(function() {
          * and that the URL is not empty.
          */
         
-         it('url is defined', function() {
+        it('each feed url is defined and not empty', function() {
              allFeeds.forEach(Feed => {
                 Feed.url
-                expect(Feed.url).toBeDefined()
+            expect(Feed.url).toBeDefined();
+            expect(Feed.url.length).not.toBe(0);
              });
          })
 
