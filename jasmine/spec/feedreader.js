@@ -75,18 +75,15 @@ $(function() {
         */
 
         it('changes visibility on click', function() {
-            var spyEvent
-            var body = $('body')
             var btn = $('.menu-icon-link');
-            var bodyClass = $('body').attr("class");
-            // click first and toggle class
-            spyEvent = spyOnEvent('btn', 'click');
-            btn.trigger( "click" );
-            // btn.click();
-            expect(bodyClass).not.toBeDefined();
-            // second click and toggle class
-            btn.click();
-            expect(bodyClass).toBe('menu-hidden');
+            
+            // first click 
+            $('.menu-icon-link').click();
+            expect(($('body').attr("class"))).toBe('');
+
+            // second click
+            $('.menu-icon-link').click();
+            expect(($('body').attr("class"))).toBe('menu-hidden');
         });
         
     });
