@@ -91,6 +91,12 @@ $(function() {
 
     /* TODO: Write a new test suite named "Initial Entries" */
     describe ('Initial Entries', function(){
+        /* TODO: Write a test that ensures when the loadFeed
+         * function is called and completes its work, there is at least
+         * a single .entry element within the .feed container.
+         * Remember, loadFeed() is asynchronous so this test will require
+         * the use of Jasmine's beforeEach and asynchronous done() function.
+         */
 
         beforeEach(function(done){
             loadFeed(0, function () {
@@ -108,15 +114,38 @@ $(function() {
 
     });
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+        
 
     /* TODO: Write a new test suite named "New Feed Selection" */
+    describe ('New Feed Selection', function(){
+        let initialFeed;
+        let newFeed;
+        let initialFeedHeader;
+        let newFeedHeader;
 
+        beforeEach(function(done){
+            loadFeed(0, function () {
+                initialFeed = $('.feed').html()
+                initialFeedHeader = $('.header-title').html()
+                console.log(initialFeedHeader)
+                done();                
+            });
+        })
+
+        it('loads new feed', function(done){
+            var newSelection = $('.feedlist a');
+
+            loadFeed(2, function(){
+                newFeed = $('.feed').html()
+                newFeedHeader = $('.header-title').html()
+            console.log(newFeedHeader)
+            });
+                  
+            expect(newFeed).not.toBe(initialFeed)
+            done();
+
+        })
+    });
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
