@@ -62,11 +62,11 @@ $(function() {
             var checkForClass = $('body').hasClass('menu-hidden');
             
             // first click 
-            $('.menu-icon-link').click()
+            $('.menu-icon-link').click();
             expect(checkForClass).toBe(true);
 
             // second click
-            $('.menu-icon-link').click()
+            $('.menu-icon-link').click();
             expect(checkForClass).toBe(true);  
             
         });
