@@ -27,7 +27,6 @@ $(function() {
 
         it('each feed url is defined and not empty', function() {
             allFeeds.forEach(Feed => {
-                Feed.url;
             expect(Feed.url).toBeDefined();
             expect(Feed.url.length).not.toBe(0);
             });
@@ -38,7 +37,6 @@ $(function() {
 
         it('each feed name is defined and not empty', function() {
             allFeeds.forEach(Feed => {
-                Feed.name;
             expect(Feed.name).toBeDefined();
             expect(Feed.name.length).not.toBe(0);
             });
@@ -61,14 +59,16 @@ $(function() {
 
         it('changes visibility on click', function() {
             var btn = $('.menu-icon-link');
+            var checkForClass = $('body').hasClass('menu-hidden');
             
             // first click 
-            $('.menu-icon-link').click();
-            expect(($('body').attr("class"))).toBe('');
+            $('.menu-icon-link').click()
+            expect(checkForClass).toBe(true);
 
             // second click
-            $('.menu-icon-link').click();
-            expect(($('body').attr("class"))).toBe('menu-hidden');
+            $('.menu-icon-link').click()
+            expect(checkForClass).toBe(true);  
+            
         });
         
     });
@@ -79,19 +79,13 @@ $(function() {
 
         // test that ensures when the loadFeed function is called and completes its work, there is at least a single .entry element within the .feed container. loadFeed() is asynchronous so this test requires the use of Jasmine's beforeEach and asynchronous done() function.
          
-
         beforeEach(function(done){
-            loadFeed(0, function () {
-                done();
+            loadFeed(0, done);
             });
-        });
 
-        it('are present when LoadFeed is called', function(done) {
-            var container = $('.feed');
-            var entry = $('.entry');
-            var checkForEntry = $(entry).parents(container).length;
-            expect(checkForEntry).not.toBe(0);
-            done();            
+        it('are present when LoadFeed is called', function() {
+            var checkForEntry = $('.feed .entry').length;
+            expect(checkForEntry).toBeGreaterThan(1);
         });
 
     });
@@ -115,7 +109,7 @@ $(function() {
 
         it('loads new feed', function(done){
 
-            loadFeed(2, function(){
+            loadFeed(2, function(done){
                 newFeed = $('.feed').html();
             });
                   
