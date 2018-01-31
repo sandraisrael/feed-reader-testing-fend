@@ -1,13 +1,19 @@
 # Project Overview
 
-For this project I was given a web-based application that reads RSS feeds. The original developer of this application saw the value in testing, and started writing their first test suite! Unfortunately, they decided to move on to start their own company and left an application with an incomplete test suite which I was tasked to complete.
+For this project I was given a web-based application that reads RSS feeds. The original developer of this application saw the value in testing, and started writing their first test suite! Unfortunately, they decided to move on to start their own company and left an application with an incomplete test suite which I was tasked to complete. I used [Jasmine](http://jasmine.github.io) to write a number of tests.
 
-I was able to use [Jasmine](http://jasmine.github.io) to write a number of tests against the pre-existing application. Which will test the underlying business logic of the application as well as the event handling and DOM manipulation.
+## How to Open app
 
-## View the [completed project here](https://sandraisrael.github.io/feed-reader-testing-fend/) 
+You can view the [completed project here](https://sandraisrael.github.io/feed-reader-testing-fend/) 
 
-Testing is an important part of the development process and many organizations practice a standard of development known as "test-driven development". This is when developers write tests first, before they ever start developing their application. All the tests initially fail and then they start writing application code to make these tests pass.
-Organizations uses test-driven development to make sure future feature development doesn't break existing features.
+**OR**
+
+### Run the app on your local machine
+1. Download/clone this repository and open in your favorite code editor 
+2. Run `node -v`on the terminal or command line. If nothing shows up or you get an error, [Install Node](https://nodejs.org/en/)
+3. Run `npm install -g http-server`
+4. Then run `http-server -o` in the project directory
+
 
 ## How I completed this project
 I was tasked to write the following tests in different test suites. Some tests required asynchronous function so I used callbacks - the `done()` argument within call to `beforeEach()`
