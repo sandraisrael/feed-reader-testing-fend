@@ -58,16 +58,13 @@ $(function() {
         //  has two expectations: does the menu display when clicked and does it hide when clicked again.
 
         it('changes visibility on click', function() {
-            var btn = $('.menu-icon-link');
-            var checkForClass = $('body').hasClass('menu-hidden');
-            
             // first click 
             $('.menu-icon-link').click();
-            expect(checkForClass).toBe(true);
+            expect($('body').hasClass('menu-hidden')).toBe(false);
 
             // second click
             $('.menu-icon-link').click();
-            expect(checkForClass).toBe(true);  
+            expect($('body').hasClass('menu-hidden')).toBe(true);  
             
         });
         
@@ -85,7 +82,7 @@ $(function() {
 
         it('are present when LoadFeed is called', function() {
             var checkForEntry = $('.feed .entry').length;
-            expect(checkForEntry).toBeGreaterThan(1);
+            expect(checkForEntry).toBeGreaterThan(0);
         });
 
     });
@@ -109,12 +106,11 @@ $(function() {
 
         it('loads new feed', function(done){
 
-            loadFeed(2, function(done){
+            loadFeed(2, function(){
                 newFeed = $('.feed').html();
+                expect(newFeed).not.toBe(initialFeed);
+                done();
             });
-                  
-            expect(newFeed).not.toBe(initialFeed);
-            done();
 
         });
     });
